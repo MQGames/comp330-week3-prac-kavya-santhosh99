@@ -69,7 +69,7 @@ function main() {
     // Initialise the array buffer to contain the points of the triangle
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0,1,0,0,1]), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0,1,0,0,1,1,1]), gl.STATIC_DRAW);
 
     // Set up the position attribute
     // Note: This has to happen /after/ the array buffer is bound
@@ -95,5 +95,12 @@ function main() {
     };
 
     render();
+    let animate = function(time) {
+     update();
+    render();
+    requestAnimationFrame(animate);
+ }
+  // Start it going
+   animate(0);
 }    
 
